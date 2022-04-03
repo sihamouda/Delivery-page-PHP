@@ -15,25 +15,26 @@
       <div class="container" style="margin-top: 3%">
          <form action="recap.php" class="offset-md-4 offset-sm-1" method="post">
             <label>Last Name</label> <br />
-            <input type="text" style="margin-bottom: 0.5em" /> <br />
+            <input type="text" style="margin-bottom: 0.5em" name="lastName" /> <br />
             <label>First Name</label> <br />
-            <input type="text" style="margin-bottom: 0.5em" /> <br />
+            <input type="text" style="margin-bottom: 0.5em" name="firstName" /> <br />
             <label>How many sandwitchs</label>
-            <input type="number" class="col-sm-1" /> <br />
+            <input type="number" class="col-sm-1" name="numberOfSandwitchs" /> <br />
             <label>Address</label> <br />
-            <textarea cols="40" rows="3"></textarea> <br />
+            <textarea cols="40" rows="3" name="address"></textarea> <br />
             <label>Type of sandwitch</label>
-            <select>
-               <option>Ham</option>
-               <option>Chicken</option>
-               <option>Escalope</option>
+            <select name="typeOfSandwitch">
+               <option value="none">None</option>
+               <option value="ham">Ham</option>
+               <option value="chicken">Chicken</option>
+               <option value="escalope">Escalope</option>
             </select>
             <br />
             <label>You can add</label> <br />
             <ul style="list-style: none">
-               <li style="margin-left: -1em"><input type="checkbox" /> Harissa</li>
-               <li style="margin-left: -1em"><input type="checkbox" />Salad</li>
-               <li style="margin-left: -1em"><input type="checkbox" />Mayo</li>
+               <li style="margin-left: -1em"><input type="checkbox" name="harissa" /> Harissa</li>
+               <li style="margin-left: -1em"><input type="checkbox" name="salad" />Salad</li>
+               <li style="margin-left: -1em"><input type="checkbox" name="mayo" />Mayo</li>
             </ul>
             <button type="submit" class="btn btn-primary" onclick="openInNewTab(recap.php)">Check!</button>
          </form>
