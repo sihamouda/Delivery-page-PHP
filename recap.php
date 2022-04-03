@@ -24,6 +24,17 @@
     }
 
 ?>
+<?php
+    $fileName= $_FILES['cin']['name'];
+    $fileTmpName= $_FILES['cin']['tmp_name'];
+    $fileError= $_FILES['cin']['error'];
+    $fileType= $_FILES['cin']['type'];
+
+    $fileExt = explode('.',$fileName);
+    $fileActualExt = strtolower(end($fileExt));
+    $allowed = array('jpg','jpeg','png','pdf');
+
+?>
 <body>
     <div class="container" style="margin-top: 6%">
         <div class="offset-md-5" style="margin-botton">
@@ -34,6 +45,25 @@
             <div class="row" style="margin-bottom: 0.5em"> 
                 <div class="col-2">First Name</div>
                 <div class="col-10"><?php echo strip_tags($_POST['firstName']); ?></div>
+            </div>
+            <div class="row" style="margin-bottom: 0.5em"> 
+                <div class="col-2">CIN</div>
+                <div class="col-10">
+                    <?php
+                        if (in_array( $fileActualExt, $allowed)){
+                            if ($fileError === 0) {
+                               $fileNameNew =uniqid('', true).'.'.$fileActualExt;
+                               $fileDestination ='uploads/'.$fileNameNew;
+                               move_uploaded_file($fileTmpName, $fileDestination);
+                               echo 'done';
+                            }else {
+                                echo "There was an error";
+                            }
+                        }else {
+                            echo "You cannot upload files of this type!";
+                        }  
+                    ?>
+                </div>
             </div>
             <div class="row" style="margin-bottom: 0.5em"> 
                 <div class="col-3">How many sandwitchs</div>

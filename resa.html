@@ -13,11 +13,13 @@
    </head>
    <body>
       <div class="container" style="margin-top: 3%">
-         <form action="recap.php" class="offset-md-4 offset-sm-1" method="post">
+         <form action="recap.php" class="offset-md-4 offset-sm-1" method="post" enctype="multipart/form-data">
             <label>Last Name</label> <br />
             <input type="text" style="margin-bottom: 0.5em" name="lastName" /> <br />
             <label>First Name</label> <br />
             <input type="text" style="margin-bottom: 0.5em" name="firstName" /> <br />
+            <label>CIN</label> <br />
+            <input type="file" style="margin-bottom: 0.5em" name="cin" /> <br />
             <label>How many sandwitchs</label>
             <input type="number" class="col-sm-1" name="numberOfSandwitchs" /> <br />
             <label>Address</label> <br />
