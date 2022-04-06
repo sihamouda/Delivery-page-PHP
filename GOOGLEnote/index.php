@@ -1,3 +1,6 @@
+<?php 
+    session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +11,39 @@
     crossorigin="anonymous">
     <title>Add Note</title>
 </head>
+
 <body >
     <div class="container">
         <div class="row">
-            <div class="col-6"> 
-                <form  action="?" method="POST">
+            <div class="col-5"> 
+                <form  action="index.php" method="POST">
                     <h1>Note</h1>
                     <textarea rows="4" cols="50" name = "note"></textarea><br>
-                    <button name="submit" value="submit" type="button" class="btn btn-primary">
-                        Add Note
-                    </button>
+                    <input  type = "submit" name = "submit" value = "Submit" class="btn btn-primary"/>
                 </form>
             </div>
-            <div class="col-6"></div>
+            <div class="col-7 row">
+            <?php
+                if (isset($_POST['submit'])){
+                    if(!empty($_POST['note'])){
+                        if(empty($_SESSION['notes'])){
+                             $_SESSION['notes']=array();}
+                       array_push($_SESSION['notes'],$_POST['note']); 
+                       $nbrNotes= count($_SESSION['notes']);
+                       for($i=0; $i<$nbrNotes;$i++){
+                           echo "<div style='  
+                           width:12em;
+                           height:12em;
+                           background:#FFFF8F;
+                           display:block;
+                           padding:1em;
+                           margin:10px'>".$_SESSION['notes'][$i]."</div>";
+                       };
+                
+                    }
+                }
+?>
+            </div>
             
         </div>
     </div>
